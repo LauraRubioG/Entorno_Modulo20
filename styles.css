@@ -1,0 +1,220 @@
+/* Vibrant color palette based on your indications */
+:root {
+    --bg-color: #2b1b3d; /* Dark purple background */
+    --panel-bg: #3a2653;
+    --accent-orange: #ff7b00;
+    --accent-cyan: #00f2fe;
+    --accent-green: #4facfe;
+    --text-color: #f0f0f0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.app-container {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1000px;
+    background: var(--panel-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--accent-cyan);
+}
+
+/* --- CONTROLS PANEL --- */
+.controls {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.controls h1 {
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+.control-group {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-orange);
+}
+
+input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background: var(--bg-color);
+    color: white;
+    border: 1px solid var(--accent-cyan);
+    border-radius: 4px;
+}
+
+button {
+    background: var(--accent-orange);
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--accent-cyan);
+    color: #000;
+    transform: translateY(-2px);
+}
+
+/* --- PREVIEW PANEL (CANVAS) --- */
+.preview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lienzo-monstruo {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: radial-gradient(circle, var(--accent-green) 0%, transparent 70%);
+    border-radius: 20px;
+    overflow: hidden;
+    /* A subtle border to frame the canvas */
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+/* Base behavior for all monster parts */
+.parte {
+    position: absolute;
+    /* object-fit: contain ensures PNGs keep their proportions */
+    object-fit: contain;
+    transition: filter 0.2s ease;
+}
+
+/* Precise layer ordering (Z-Index), Sizes and Positions */
+
+/* Body base (Smaller and centered) */
+#base-del-cuerpo {
+    width: 50%;
+    height: 50%;
+    top: 25%;
+    left: 25%;
+    z-index: 30;
+}
+
+/* Limbs IN FRONT of the body (Z-index greater than 30) */
+#cuernos {
+    width: 60%;
+    height: 30%;
+    top: 15%; /* Slightly lowered */
+    left: 20%;
+    z-index: 60;
+}
+
+/* Separated arms */
+#brazo-izquierdo {
+    width: 50%;
+    height: 60%;
+    top: 25%;
+    left: -5%;
+    z-index: 50;
+}
+
+#brazo-derecho {
+    width: 50%;
+    height: 60%;
+    top: 25%;
+    left: 55%;
+    z-index: 50;
+}
+
+/* Long Arms Modifiers (closer to the body) */
+#brazo-izquierdo.brazos-largos {
+    top: 30%; /* Slightly lowered */
+    left: 0%; /* Further separated from the body */
+}
+#brazo-derecho.brazos-largos {
+    top: 30%; /* Slightly lowered */
+    left: 50%; /* Further separated from the body */
+}
+
+/* Strong Arms Modifiers (smaller and closer to the body) */
+#brazo-izquierdo.brazos-fuertes {
+    width: 35%;
+    height: 45%;
+    top: 35%;
+    left: 10%; /* Closer to the body */
+}
+#brazo-derecho.brazos-fuertes {
+    width: 35%;
+    height: 45%;
+    top: 35%;
+    left: 58%;
+}
+
+#piernas {
+    width: 60%;
+    height: 35%;
+    top: 65%;
+    left: 20%;
+    z-index: 40;
+}
+
+/* Accessories BEHIND the body (Z-index less than 30) */
+#alas-peludas {
+    width: 90%;
+    height: 60%;
+    top: 22%; /* Slightly lowered */
+    left: 5%;
+    z-index: 10;
+}
+
+#cola-larga {
+    width: 35%; /* Made smaller */
+    height: 25%; /* Made smaller */
+    top: 65%; /* Adjusted to the new size */
+    left: 50%;
+    z-index: 20;
+}
+
+/* Utility classes */
+.oculto {
+    display: none !important;
+}
+
+#mensaje-adopcion {
+    background: var(--accent-green);
+    color: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+}

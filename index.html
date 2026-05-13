@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creador de Monstruitos - Edición Furry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Control Panel (Left) -->
+        <aside class="panel controls">
+            <h1>Laboratorio Monstruoso</h1>
+            
+            <div class="control-group">
+                <label for="color-base">Color Base y Extremidades (Hue):</label>
+                <!-- Range from 0 to 360 degrees to rotate the original color of your PNG -->
+                <input type="range" id="color-base" min="0" max="360" value="0">
+            </div>
+
+            <div class="control-group">
+                <label><input type="checkbox" id="toggle-cuernos"> Añadir CUERNOS</label><br>
+                <label><input type="checkbox" id="toggle-alas"> Añadir ALAS PELUDAS</label><br>
+                <label><input type="checkbox" id="toggle-cola"> Añadir COLA LARGA</label>
+            </div>
+
+            <div class="control-group">
+                <label for="select-brazos">Tipo de BRAZOS:</label>
+                <select id="select-brazos">
+                    <option value="">Sin nada</option>
+                    <option value="Largos">Brazos Largos</option>
+                    <option value="Fuertes">Brazos Fuertes</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="select-piernas">Tipo de PIERNAS:</label>
+                <select id="select-piernas">
+                    <option value="">Sin nada</option>
+                    <option value="Garra">Piernas de Garra</option>
+                    <option value="Oso">Piernas de Oso</option>
+                </select>
+            </div>
+
+            <button id="btn-comprar">Comprar Monstruo</button>
+            <div id="mensaje-adopcion" class="oculto"></div>
+        </aside>
+
+        <!-- Preview Panel (Right) -->
+        <main class="panel preview">
+            <div id="lienzo-monstruo">
+                <!-- Parts overlap using z-index pointing to the images folder -->
+                <img id="alas-peludas" class="parte oculto" src="images/alas.png" alt="Alas">
+                <img id="cola-larga" class="parte oculto" src="images/cola.png" alt="Cola">
+                <img id="piernas" class="parte tintable oculto" src="" alt="Piernas">
+                <img id="brazo-izquierdo" class="parte tintable oculto" src="" alt="Brazo Izquierdo">
+                <img id="brazo-derecho" class="parte tintable oculto" src="" alt="Brazo Derecho">
+                <img id="base-del-cuerpo" class="parte tintable" src="images/mounstruo.png" alt="Cuerpo">
+                <img id="cuernos" class="parte oculto" src="images/cuernos.png" alt="Cuernos">
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
