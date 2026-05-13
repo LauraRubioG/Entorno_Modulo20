@@ -27,7 +27,18 @@ const partesTintables = document.querySelectorAll('.tintable');
 const btnComprar = document.getElementById('btn-comprar');
 const msjAdopcion = document.getElementById('mensaje-adopcion');
 
+// Start Screen Controllers
+const pantallaInicio = document.getElementById('pantalla-inicio');
+const btnJugar = document.getElementById('btn-jugar');
+const appPrincipal = document.getElementById('app-principal');
+
 // === UI Logic ===
+
+// 0. Play Button Transition
+btnJugar.addEventListener('click', () => {
+    pantallaInicio.classList.add('oculto');      // Oculta la pantalla de inicio
+    appPrincipal.classList.remove('oculto');     // Muestra el creador de monstruos
+});
 
 // 1. Toggle accessories visibility
 chkCuernos.addEventListener('change', (e) => imgCuernos.classList.toggle('oculto', !e.target.checked));

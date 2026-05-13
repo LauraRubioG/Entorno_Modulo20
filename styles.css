@@ -37,6 +37,32 @@ body {
     border: 3px solid var(--accent-cyan);
 }
 
+/* --- START SCREEN --- */
+#pantalla-inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+#img-inicio-saltando {
+    width: 250px;
+    /* Animación infinita que alterna hacia arriba y abajo */
+    animation: saltar 0.5s infinite alternate ease-in-out;
+}
+
+@keyframes saltar {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50px); } /* Sube 50 píxeles */
+}
+
+#btn-jugar {
+    font-size: 2rem;
+    padding: 15px 50px;
+    border-radius: 50px; /* Bordes más redondeados para que parezca un juego */
+}
+
 /* --- CONTROLS PANEL --- */
 .controls {
     flex: 1;
